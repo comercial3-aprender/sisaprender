@@ -1,5 +1,7 @@
 <?php
 declare(strict_types=1);
+
+$assetBase = str_starts_with($_SERVER['REQUEST_URI'], '/configuracoes') ? '../' : '';
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -7,7 +9,7 @@ declare(strict_types=1);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SisAprender | Plano de Ação</title>
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="<?php echo $assetBase; ?>assets/css/style.css">
 </head>
 <body>
     <header class="topbar">
