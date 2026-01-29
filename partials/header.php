@@ -1,7 +1,12 @@
 <?php
 declare(strict_types=1);
 
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 $assetBase = str_starts_with($_SERVER['REQUEST_URI'], '/configuracoes') ? '../' : '';
+$user = $_SESSION['user'] ?? null;
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -21,8 +26,15 @@ $assetBase = str_starts_with($_SERVER['REQUEST_URI'], '/configuracoes') ? '../' 
             </div>
         </div>
         <nav class="topbar__nav">
-            <a href="/index.php" class="topbar__link">Login</a>
-            <a href="/configuracoes" class="topbar__link">Configurações</a>
+            <?php if ($user) : ?>
+                <a href="/dashboard.php" class="topbar__link">Dashboard</a>
+                <?php if (($user['role_slug'] ?? '') === 'administrador') : ?>
+                    <a href="/configuracoes" class="topbar__link">Configurações</a>
+                <?php endif; ?>
+                <a href="/logout.php" class="topbar__link">Sair</a>
+            <?php else : ?>
+                <a href="/index.php" class="topbar__link">Login</a>
+            <?php endif; ?>
         </nav>
     </header>
     <main class="main">

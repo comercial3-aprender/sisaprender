@@ -2,8 +2,13 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/config/database.php';
+require_once __DIR__ . '/config/auth.php';
 
 $errors = [];
+if (current_user()) {
+    header('Location: /dashboard.php');
+    exit;
+}
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = trim($_POST['email'] ?? '');
     $password = trim($_POST['password'] ?? '');
@@ -11,7 +16,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($email === '' || $password === '') {
         $errors[] = 'Informe e-mail e senha para continuar.';
     } else {
-        $errors[] = 'Login em construção. Em breve você poderá acessar o sistema.';
+        $result = attempt_login($pdo, $email, $password);
+        if (!empty($result['success'])) {
+            header('Location: /dashboard.php');
+            exit;
+        }
+
+        $errors[] = $result['message'] ?? 'Não foi possível autenticar.';
     }
 }
 
@@ -46,6 +57,10 @@ require_once __DIR__ . '/partials/header.php';
     <div class="login__panel">
         <h2>Entrar</h2>
         <p class="muted">Acesse com seu e-mail institucional.</p>
+        <div class="login__helper">
+            <p><strong>Acesso inicial:</strong> admin@sisaprender.local</p>
+            <p><strong>Senha:</strong> admin123</p>
+        </div>
 
         <?php if ($errors) : ?>
             <div class="alert">

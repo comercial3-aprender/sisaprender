@@ -124,7 +124,7 @@ INSERT INTO users (role_id, name, email, password_hash)
 SELECT roles.id,
        'Administrador do Sistema',
        'admin@sisaprender.local',
-       '$2y$10$KRNSa4rZtiUaXEjDJc/6bOfMLIlZJVdRwNfQRYAmkjmgNF/iDZc2e'
+       '$2y$12$uzBgo857zo8r/19P6QKqE.4lC5jeHlMOpjj0cSFvf3j8IyLk7kA6m'
 FROM roles
 WHERE roles.slug = 'administrador'
 ON DUPLICATE KEY UPDATE name = VALUES(name), role_id = VALUES(role_id);
