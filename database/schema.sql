@@ -119,3 +119,12 @@ INSERT INTO dimensions (name, slug) VALUES
     ('Administrativo-Financeira', 'administrativo-financeira'),
     ('Pessoal e Relacional', 'pessoal-relacional')
 ON DUPLICATE KEY UPDATE name = VALUES(name);
+
+INSERT INTO users (role_id, name, email, password_hash)
+SELECT roles.id,
+       'Administrador do Sistema',
+       'admin@sisaprender.local',
+       '$2y$10$KRNSa4rZtiUaXEjDJc/6bOfMLIlZJVdRwNfQRYAmkjmgNF/iDZc2e'
+FROM roles
+WHERE roles.slug = 'administrador'
+ON DUPLICATE KEY UPDATE name = VALUES(name), role_id = VALUES(role_id);
