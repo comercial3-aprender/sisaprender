@@ -145,6 +145,14 @@ input {
     font-size: 16px;
 }
 
+select {
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    padding: 12px 14px;
+    font-size: 16px;
+    background: #fff;
+}
+
 .button {
     border: none;
     border-radius: 12px;
@@ -168,6 +176,25 @@ input {
     border-radius: 12px;
     padding: 12px 16px;
     border: 1px solid #ffd9a1;
+}
+
+.alert--success {
+    background: #ecfdf3;
+    color: #027a48;
+    border-color: #abefc6;
+}
+
+.form-card {
+    max-width: 520px;
+}
+
+.link {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.link:hover {
+    color: var(--primary-dark);
 }
 
 .page__header {

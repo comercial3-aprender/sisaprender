@@ -21,6 +21,7 @@ require_once __DIR__ . '/../partials/header.php';
     <div class="card">
         <h3>Em construção</h3>
         <p>Em breve será possível cadastrar municípios, escolas, usuários e parâmetros do sistema.</p>
+        <a href="/configuracoes/usuarios.php" class="button button--primary">Cadastrar usuário</a>
     </div>
 </section>
 

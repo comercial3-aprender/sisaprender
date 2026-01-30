@@ -78,6 +78,7 @@ require_once __DIR__ . '/partials/header.php';
             <input type="password" id="password" name="password" placeholder="••••••••" required>
 
             <button type="submit" class="button button--primary">Acessar</button>
+            <a href="/reset-password.php" class="link">Esqueci minha senha</a>
         </form>
     </div>
 </section>
