@@ -166,6 +166,15 @@ select {
     color: #fff;
 }
 
+.button--secondary {
+    background: #e8efff;
+    color: var(--primary-dark);
+}
+
+.button--secondary:hover {
+    background: #d5e2ff;
+}
+
 .button--primary:hover {
     background: var(--primary-dark);
 }
@@ -195,6 +204,24 @@ select {
 
 .link:hover {
     color: var(--primary-dark);
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 12px;
+    font-size: 14px;
+}
+
+.table th,
+.table td {
+    text-align: left;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+}
+
+.table thead {
+    background: #f8f9fc;
 }
 
 .page__header {
